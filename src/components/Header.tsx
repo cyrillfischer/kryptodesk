@@ -1,30 +1,28 @@
-// src/components/Header.tsx
+import React from "react";
+import Logo from "../assets/logo/KryptoDesk_Logo_white.svg";
 
-import { useState } from 'react';
-import Logo from '../assets/logo/KryptoDesk_Logo_complete_white.svg';
-
-export function Header() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
+export const Header: React.FC = () => {
   return (
-    <header className="bg-dark-800 border-b border-white/5 backdrop-blur-xl sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+    <header className="w-full bg-[#0B1220] border-b border-white/5 py-4">
+      <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
         
         {/* Logo */}
         <div className="flex items-center">
           <img
             src={Logo}
             alt="KryptoDesk Logo"
-            className="h-7 w-auto cursor-pointer"
-            onClick={() => (window.location.href = '/')}
+            className="h-9 w-auto sm:h-10 md:h-11"
           />
         </div>
 
-        {/* Beta Badge */}
-        <span className="text-xs font-medium text-green-400 bg-green-400/10 px-2 py-1 rounded-md">
-          Beta
-        </span>
+        {/* Beta */}
+        <div className="hidden sm:block">
+          <span className="px-2 py-1 text-xs rounded-md bg-white/10 text-white/80">
+            Beta
+          </span>
+        </div>
+
       </div>
     </header>
   );
-}
+};
