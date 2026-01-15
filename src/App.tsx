@@ -50,6 +50,8 @@ function App() {
       {/* HEADER */}
       <Header />
 
+<PartnerTiles />
+      
       {/* SERVICES BAR (C2) */}
       <ServicesBar />
 
