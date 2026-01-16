@@ -7,6 +7,9 @@ import {
 
 export default function Header() {
   return (
+<div className="bg-red-600 text-white text-center p-2">
+  CTA HEADER DEBUG
+</div>
     <header className="w-full border-b border-white/5 bg-[#050b1a]">
       <div className="max-w-7xl mx-auto px-6 py-6">
 
