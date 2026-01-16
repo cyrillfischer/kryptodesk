@@ -1,65 +1,50 @@
-// src/components/PartnerTiles.tsx
 import React from "react";
 
-// Brand-Icons
-import BinanceIcon from "../assets/icons/binance.svg";
-import LedgerIcon from "../assets/icons/ledger.svg";
-import RelaiIcon from "../assets/icons/relai.svg";
-import KoinlyIcon from "../assets/icons/koinly.svg";
-
-type Partner = {
-  name: string;
-  icon: string;
-  url: string;
-  code?: string; // z.B. Relai-Code
-};
-
-const partners: Partner[] = [
+const partners = [
   {
     name: "Binance",
-    icon: BinanceIcon,
-    url: "https://accounts.binance.com/register?ref=445721617"
+    logo: "/assets/icons/binance.svg",
+    url: "https://accounts.binance.com/register?ref=445721617",
   },
   {
     name: "Ledger",
-    icon: LedgerIcon,
-    url: "https://shop.ledger.com/de/pages/referral-program?referral_code=VSG51E4JGB8FP"
+    logo: "/assets/icons/ledger.svg",
+    url: "https://shop.ledger.com/de/pages/referral-program?referral_code=VSG51E4JGB8FP",
   },
   {
     name: "Relai",
-    icon: RelaiIcon,
-    url: "https://relai.me/referral",
-    code: "REL313148"
+    logo: "/assets/icons/relai.svg",
+    url: "https://relai.me/referral?code=REL313148",
   },
   {
     name: "Koinly",
-    icon: KoinlyIcon,
-    url: "https://koinly.io/?via=0F06321F&utm_source=affiliate"
-  }
+    logo: "/assets/icons/koinly.svg",
+    url: "https://koinly.io/?via=0F06321F&utm_source=affiliate",
+  },
 ];
 
-export const PartnerTiles: React.FC = () => {
+const PartnerTiles: React.FC = () => {
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 mt-8">
-      <div className="flex items-center justify-start gap-3 overflow-x-auto pb-2 scrollbar-none sm:grid sm:grid-cols-4 sm:gap-4 sm:overflow-visible">
-        {partners.map((p) => (
-          <button
-            key={p.name}
-            onClick={() => window.open(p.url, "_blank")}
-            className="flex items-center gap-3 bg-slate-800/70 hover:bg-slate-700 border border-white/5 rounded-xl px-4 py-3 transition-all duration-150 hover:scale-[1.03] cursor-pointer"
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+      <div className="flex flex-wrap justify-center gap-4">
+        {partners.map((partner) => (
+          <a
+            key={partner.name}
+            href={partner.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center w-14 h-14 rounded-xl bg-white/5 hover:bg-white/10 transition"
           >
-            <img src={p.icon} alt={p.name} className="w-7 h-7 flex-shrink-0" />
-            <div className="flex flex-col items-start">
-              <span className="text-white text-sm font-medium">{p.name}</span>
-              {p.code && (
-                <span className="text-xs text-gray-400">
-                  Code: <span className="font-mono">{p.code}</span>
-                </span>
-              )}
-            </div>
-          </button>
+            <img
+              src={partner.logo}
+              alt={partner.name}
+              className="w-8 h-8"
+            />
+          </a>
         ))}
       </div>
     </div>
   );
 };
+
+export default PartnerTiles;
