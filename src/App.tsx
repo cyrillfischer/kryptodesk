@@ -1,7 +1,8 @@
 import { useState } from "react";
 
 import { Header } from "./components/Header";
-import { PartnerTiles } from "./components/PartnerTiles";
+import PartnerTiles from "./components/PartnerTiles";
+
 import { SearchBar } from "./components/SearchBar";
 import { TabSwitcher } from "./components/TabSwitcher";
 import { CoinTable } from "./components/CoinTable";
