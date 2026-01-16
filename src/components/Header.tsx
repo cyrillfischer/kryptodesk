@@ -65,17 +65,22 @@ function ActionButton({
         rounded-xl
         bg-[#0f1629]
         border border-white/5
-        px-4 py-3
+        px-4 py-2.5
         text-sm font-medium text-white/80
         transition
-        hover:bg-[#0f3f3a]
-        hover:text-teal-300
+        hover:bg-[#27d3b8]
+        hover:text-[#050b1a]
       "
     >
       <img
         src={icon}
         alt={label}
-        className="h-5 w-5 opacity-80 group-hover:opacity-100 transition"
+        className="
+          h-[22px] w-[22px]
+          transition
+          group-hover:brightness-0
+          group-hover:invert
+        "
       />
       <span>{label}</span>
     </a>
