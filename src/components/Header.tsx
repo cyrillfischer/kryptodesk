@@ -1,3 +1,8 @@
+<div className="bg-red-600 text-white p-2 text-center">
+  DEBUG HEADER AKTIV
+</div>
+
+
 import binanceIcon from "@/assets/icons/binance.svg";
 import ledgerIcon from "@/assets/icons/ledger.svg";
 import relaiIcon from "@/assets/icons/relai.svg";
