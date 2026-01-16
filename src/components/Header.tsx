@@ -7,17 +7,10 @@ import {
 
 export default function Header() {
   return (
-    <div className="bg-red-600 text-white p-4 text-center">
-      ⚠️ CTA HEADER IST AKTIV ⚠️
-    </div>
-  );
-}
-
-
     <header className="w-full border-b border-white/5 bg-[#050b1a]">
       <div className="max-w-7xl mx-auto px-6 py-6">
 
-        {/* TOP BAR */}
+        {/* LOGO */}
         <div className="flex items-center gap-2 text-white font-semibold text-lg mb-6">
           KryptoDesk
           <span className="text-teal-400 text-xs font-medium">Beta</span>
@@ -25,27 +18,28 @@ export default function Header() {
 
         {/* CTA CARDS */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+
           <CTACard
             icon={ArrowTrendingUpIcon}
             title="Trading"
             description="Krypto kaufen & verkaufen"
-            target="Binance"
+            cta="→ Zu Binance"
             href="https://accounts.binance.com/register?ref=445721617"
           />
 
           <CTACard
             icon={WalletIcon}
             title="Wallet"
-            description="Coins sicher verwahren"
-            target="Ledger"
+            description="Coins sicher aufbewahren"
+            cta="→ Zu Ledger"
             href="https://shop.ledger.com/de/pages/referral-program?referral_code=VSG51E4JGB8FP"
           />
 
           <CTACard
             icon={CalendarDaysIcon}
             title="Sparplan"
-            description="Regelmässig investieren"
-            target="Relai"
+            description="Automatisch investieren"
+            cta="→ Zu Relai"
             href="https://relai.me/referral"
           />
 
@@ -53,11 +47,11 @@ export default function Header() {
             icon={PercentBadgeIcon}
             title="Steuern"
             description="Krypto korrekt versteuern"
-            target="Koinly"
+            cta="→ Zu Koinly"
             href="https://koinly.io/?via=0F06321F&utm_source=affiliate"
           />
-        </div>
 
+        </div>
       </div>
     </header>
   );
@@ -67,13 +61,13 @@ function CTACard({
   icon: Icon,
   title,
   description,
-  target,
+  cta,
   href,
 }: {
   icon: React.ElementType;
   title: string;
   description: string;
-  target: string;
+  cta: string;
   href: string;
 }) {
   return (
@@ -83,7 +77,6 @@ function CTACard({
       rel="noopener noreferrer"
       className="
         group
-        relative
         rounded-2xl
         bg-[#0f1629]
         border border-white/5
@@ -103,8 +96,8 @@ function CTACard({
       <div className="text-sm text-white/60 mb-3">{description}</div>
 
       {/* CTA */}
-      <div className="text-sm text-[#27d3b8] font-medium">
-        → {target}
+      <div className="text-sm font-medium text-[#27d3b8]">
+        {cta}
       </div>
     </a>
   );
