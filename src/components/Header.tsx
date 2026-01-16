@@ -5,7 +5,7 @@ import koinlyIcon from "../assets/icons/koinly.svg";
 
 export default function Header() {
   return (
-    <header className="w-full border-b border-white/5 bg-[#050b1a]">
+    <header className="w-full border-b border-white/10 bg-[#050b1a]">
       <div className="max-w-7xl mx-auto px-6 py-4">
 
         {/* TOP BAR */}
@@ -14,38 +14,31 @@ export default function Header() {
             KryptoDesk
             <span className="text-teal-400 text-xs font-medium ml-1">Beta</span>
           </div>
-
-          <nav className="flex items-center gap-6 text-sm text-white/80">
-            <span>Trading</span>
-            <span>Wallet</span>
-            <span>Sparplan</span>
-            <span>Steuern</span>
-          </nav>
         </div>
 
-        {/* PROVIDER CARDS */}
+        {/* ACTION BUTTONS */}
         <div className="grid grid-cols-4 gap-4">
-          <ProviderCard
+          <ActionButton
             icon={binanceIcon}
-            label="Binance"
+            label="Trading"
             href="https://accounts.binance.com/register?ref=445721617"
           />
 
-          <ProviderCard
+          <ActionButton
             icon={ledgerIcon}
-            label="Ledger"
+            label="Wallet"
             href="https://shop.ledger.com/de/pages/referral-program?referral_code=VSG51E4JGB8FP"
           />
 
-          <ProviderCard
+          <ActionButton
             icon={relaiIcon}
-            label="Relai"
-            href="https://relai.me/referral/REL313148"
+            label="Sparplan"
+            href="https://relai.me/referral"
           />
 
-          <ProviderCard
+          <ActionButton
             icon={koinlyIcon}
-            label="Koinly"
+            label="Steuern"
             href="https://koinly.io/?via=0F06321F&utm_source=affiliate"
           />
         </div>
@@ -55,7 +48,7 @@ export default function Header() {
   );
 }
 
-function ProviderCard({
+function ActionButton({
   icon,
   label,
   href,
@@ -69,18 +62,19 @@ function ProviderCard({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex items-center gap-3 rounded-2xl bg-white/5 hover:bg-white/10 transition px-4 py-3"
+      className="
+        flex flex-col items-center justify-center
+        gap-2
+        rounded-2xl
+        bg-white
+        text-black
+        hover:bg-gray-100
+        transition
+        px-4 py-5
+      "
     >
-      <img
-        src={icon}
-        alt={label}
-        className="h-6 w-6"
-        onError={(e) => {
-          console.error(`Icon load failed: ${label}`, icon);
-          (e.currentTarget as HTMLImageElement).style.display = "none";
-        }}
-      />
-      <span className="text-white text-sm">{label}</span>
+      <img src={icon} alt={label} className="h-6 w-6" />
+      <span className="text-sm font-medium">{label}</span>
     </a>
   );
 }
