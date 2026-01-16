@@ -8,36 +8,45 @@ import {
 export default function Header() {
   return (
     <header className="w-full border-b border-white/5 bg-[#050b1a]">
-      <div className="max-w-7xl mx-auto px-6 py-4">
+      <div className="max-w-7xl mx-auto px-6 py-6">
 
         {/* TOP BAR */}
-        <div className="flex items-center justify-between mb-5">
-          <div className="flex items-center gap-2 text-white font-semibold text-lg">
-            KryptoDesk
-            <span className="text-teal-400 text-xs font-medium ml-1">Beta</span>
-          </div>
+        <div className="flex items-center gap-2 text-white font-semibold text-lg mb-6">
+          KryptoDesk
+          <span className="text-teal-400 text-xs font-medium">Beta</span>
         </div>
 
-        {/* ACTION BUTTONS */}
-        <div className="grid grid-cols-4 gap-3">
-          <ActionButton
+        {/* CTA CARDS */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <CTACard
             icon={ArrowTrendingUpIcon}
-            label="Trading"
+            title="Trading"
+            description="Krypto kaufen & verkaufen"
+            target="Binance"
             href="https://accounts.binance.com/register?ref=445721617"
           />
-          <ActionButton
+
+          <CTACard
             icon={WalletIcon}
-            label="Wallet"
+            title="Wallet"
+            description="Coins sicher verwahren"
+            target="Ledger"
             href="https://shop.ledger.com/de/pages/referral-program?referral_code=VSG51E4JGB8FP"
           />
-          <ActionButton
+
+          <CTACard
             icon={CalendarDaysIcon}
-            label="Sparplan"
+            title="Sparplan"
+            description="Regelmässig investieren"
+            target="Relai"
             href="https://relai.me/referral"
           />
-          <ActionButton
+
+          <CTACard
             icon={PercentBadgeIcon}
-            label="Steuern"
+            title="Steuern"
+            description="Krypto korrekt versteuern"
+            target="Koinly"
             href="https://koinly.io/?via=0F06321F&utm_source=affiliate"
           />
         </div>
@@ -47,13 +56,17 @@ export default function Header() {
   );
 }
 
-function ActionButton({
+function CTACard({
   icon: Icon,
-  label,
+  title,
+  description,
+  target,
   href,
 }: {
   icon: React.ElementType;
-  label: string;
+  title: string;
+  description: string;
+  target: string;
   href: string;
 }) {
   return (
@@ -63,19 +76,29 @@ function ActionButton({
       rel="noopener noreferrer"
       className="
         group
-        flex items-center justify-center gap-3
-        rounded-xl
+        relative
+        rounded-2xl
         bg-[#0f1629]
         border border-white/5
-        px-4 py-2.5
-        text-sm font-medium text-white/80
+        p-5
         transition
-        hover:bg-[#27d3b8]
-        hover:text-[#050b1a]
+        hover:border-[#27d3b8]
+        hover:bg-[#0f1f1c]
       "
     >
-      <Icon className="h-5 w-5 stroke-current" />
-      <span>{label}</span>
+      {/* ICON */}
+      <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-black/30">
+        <Icon className="h-5 w-5 text-white group-hover:text-[#27d3b8] transition" />
+      </div>
+
+      {/* TEXT */}
+      <div className="text-white font-medium mb-1">{title}</div>
+      <div className="text-sm text-white/60 mb-3">{description}</div>
+
+      {/* CTA */}
+      <div className="text-sm text-[#27d3b8] font-medium">
+        → {target}
+      </div>
     </a>
   );
 }
