@@ -1,6 +1,12 @@
 import React from "react";
 
-const partners = [
+type Partner = {
+  name: string;
+  logo: string;
+  url: string;
+};
+
+const partners: Partner[] = [
   {
     name: "Binance",
     logo: "/assets/icons/binance.svg",
@@ -14,7 +20,7 @@ const partners = [
   {
     name: "Relai",
     logo: "/assets/icons/relai.svg",
-    url: "https://relai.me/referral?code=REL313148",
+    url: "https://relai.me/referral/REL313148",
   },
   {
     name: "Koinly",
@@ -23,28 +29,24 @@ const partners = [
   },
 ];
 
-const PartnerTiles: React.FC = () => {
+export default function PartnerTiles() {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
-      <div className="flex flex-wrap justify-center gap-4">
-        {partners.map((partner) => (
-          <a
-            key={partner.name}
-            href={partner.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center w-14 h-14 rounded-xl bg-white/5 hover:bg-white/10 transition"
-          >
-            <img
-              src={partner.logo}
-              alt={partner.name}
-              className="w-8 h-8"
-            />
-          </a>
-        ))}
-      </div>
+    <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
+      {partners.map((partner) => (
+        <a
+          key={partner.name}
+          href={partner.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-center bg-dark-800 hover:bg-dark-700 transition rounded-xl p-6"
+        >
+          <img
+            src={partner.logo}
+            alt={partner.name}
+            className="h-10 w-10 object-contain"
+          />
+        </a>
+      ))}
     </div>
   );
-};
-
-export default PartnerTiles;
+}
