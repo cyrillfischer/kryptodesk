@@ -1,7 +1,9 @@
-import binanceIcon from "../assets/icons/binance.svg";
-import ledgerIcon from "../assets/icons/ledger.svg";
-import relaiIcon from "../assets/icons/relai.svg";
-import koinlyIcon from "../assets/icons/koinly.svg";
+import {
+  ArrowTrendingUpIcon,
+  WalletIcon,
+  CalendarDaysIcon,
+  PercentBadgeIcon,
+} from "@heroicons/react/24/outline";
 
 export default function Header() {
   return (
@@ -19,22 +21,22 @@ export default function Header() {
         {/* ACTION BUTTONS */}
         <div className="grid grid-cols-4 gap-3">
           <ActionButton
-            icon={binanceIcon}
+            icon={ArrowTrendingUpIcon}
             label="Trading"
             href="https://accounts.binance.com/register?ref=445721617"
           />
           <ActionButton
-            icon={ledgerIcon}
+            icon={WalletIcon}
             label="Wallet"
             href="https://shop.ledger.com/de/pages/referral-program?referral_code=VSG51E4JGB8FP"
           />
           <ActionButton
-            icon={relaiIcon}
+            icon={CalendarDaysIcon}
             label="Sparplan"
             href="https://relai.me/referral"
           />
           <ActionButton
-            icon={koinlyIcon}
+            icon={PercentBadgeIcon}
             label="Steuern"
             href="https://koinly.io/?via=0F06321F&utm_source=affiliate"
           />
@@ -46,11 +48,11 @@ export default function Header() {
 }
 
 function ActionButton({
-  icon,
+  icon: Icon,
   label,
   href,
 }: {
-  icon: string;
+  icon: React.ElementType;
   label: string;
   href: string;
 }) {
@@ -72,18 +74,7 @@ function ActionButton({
         hover:text-[#050b1a]
       "
     >
-     <img
-  src={icon}
-  alt={label}
-  className="
-    h-[22px] w-[22px]
-    brightness-0 invert
-    transition
-    group-hover:brightness-0
-    group-hover:invert-0
-  "
-/>
-
+      <Icon className="h-5 w-5 stroke-current" />
       <span>{label}</span>
     </a>
   );
