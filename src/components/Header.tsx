@@ -8,10 +8,11 @@ export default function Header() {
     <header className="w-full bg-[#050b1a] border-b border-white/5">
       <div className="max-w-7xl mx-auto px-6 py-4">
 
-        {/* Top Navigation */}
+        {/* TOP BAR */}
         <div className="flex items-center justify-between mb-6">
-          <div className="text-white font-semibold text-lg">
-            KryptoDesk <span className="text-teal-400 text-sm">Beta</span>
+          <div className="flex items-center gap-2 text-white font-semibold text-lg">
+            KryptoDesk
+            <span className="text-teal-400 text-xs font-medium">Beta</span>
           </div>
 
           <nav className="flex items-center gap-6 text-sm text-white/80">
@@ -22,12 +23,31 @@ export default function Header() {
           </nav>
         </div>
 
-        {/* Provider Icons */}
+        {/* PROVIDER ICONS */}
         <div className="grid grid-cols-4 gap-4">
-          <ProviderCard icon={binanceIcon} label="Binance" />
-          <ProviderCard icon={ledgerIcon} label="Ledger" />
-          <ProviderCard icon={relaiIcon} label="Relai" />
-          <ProviderCard icon={koinlyIcon} label="Koinly" />
+          <ProviderCard
+            icon={binanceIcon}
+            label="Binance"
+            href="https://www.binance.com"
+          />
+
+          <ProviderCard
+            icon={ledgerIcon}
+            label="Ledger"
+            href="https://www.ledger.com"
+          />
+
+          <ProviderCard
+            icon={relaiIcon}
+            label="Relai"
+            href="https://relai.me/referral/REL313148"
+          />
+
+          <ProviderCard
+            icon={koinlyIcon}
+            label="Koinly"
+            href="https://koinly.io"
+          />
         </div>
 
       </div>
@@ -38,14 +58,21 @@ export default function Header() {
 function ProviderCard({
   icon,
   label,
+  href,
 }: {
   icon: string;
   label: string;
+  href: string;
 }) {
   return (
-    <div className="flex items-center gap-3 bg-white/5 hover:bg-white/10 transition rounded-xl px-4 py-3">
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex items-center gap-3 bg-white/5 hover:bg-white/10 transition rounded-xl px-4 py-3"
+    >
       <img src={icon} alt={label} className="h-6 w-6" />
       <span className="text-white text-sm">{label}</span>
-    </div>
+    </a>
   );
 }
