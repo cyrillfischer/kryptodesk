@@ -1,10 +1,3 @@
-import {
-  ArrowTrendingUpIcon,
-  WalletIcon,
-  CalendarDaysIcon,
-  PercentBadgeIcon,
-} from "@heroicons/react/24/outline";
-
 export default function Header() {
   return (
     <header className="w-full border-b border-white/5 bg-[#050b1a]">
@@ -20,35 +13,55 @@ export default function Header() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
 
           <CTACard
-            icon={ArrowTrendingUpIcon}
             title="Trading"
             description="Krypto kaufen & verkaufen"
-            cta="→ Zu Binance"
+            target="Binance"
             href="https://accounts.binance.com/register?ref=445721617"
+            icon={
+              <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M3 17l6-6 4 4 8-8" />
+                <path d="M14 7h7v7" />
+              </svg>
+            }
           />
 
           <CTACard
-            icon={WalletIcon}
             title="Wallet"
             description="Coins sicher aufbewahren"
-            cta="→ Zu Ledger"
+            target="Ledger"
             href="https://shop.ledger.com/de/pages/referral-program?referral_code=VSG51E4JGB8FP"
+            icon={
+              <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
+                <rect x="3" y="6" width="18" height="12" rx="2" />
+                <path d="M16 12h2" />
+              </svg>
+            }
           />
 
           <CTACard
-            icon={CalendarDaysIcon}
             title="Sparplan"
-            description="Automatisch investieren"
-            cta="→ Zu Relai"
+            description="Regelmässig investieren"
+            target="Relai"
             href="https://relai.me/referral"
+            icon={
+              <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M12 7v5l3 3" />
+              </svg>
+            }
           />
 
           <CTACard
-            icon={PercentBadgeIcon}
             title="Steuern"
             description="Krypto korrekt versteuern"
-            cta="→ Zu Koinly"
+            target="Koinly"
             href="https://koinly.io/?via=0F06321F&utm_source=affiliate"
+            icon={
+              <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M12 3v18" />
+                <path d="M17 8c0-2-2-3-5-3s-5 1-5 3 2 3 5 3 5 1 5 3-2 3-5 3-5-1-5-3" />
+              </svg>
+            }
           />
 
         </div>
@@ -58,17 +71,17 @@ export default function Header() {
 }
 
 function CTACard({
-  icon: Icon,
   title,
   description,
-  cta,
+  target,
   href,
+  icon,
 }: {
-  icon: React.ElementType;
   title: string;
   description: string;
-  cta: string;
+  target: string;
   href: string;
+  icon: React.ReactNode;
 }) {
   return (
     <a
@@ -86,19 +99,13 @@ function CTACard({
         hover:bg-[#0f1f1c]
       "
     >
-      {/* ICON */}
-      <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-black/30">
-        <Icon className="h-5 w-5 text-white group-hover:text-[#27d3b8] transition" />
+      <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-black/30 text-white group-hover:text-[#27d3b8] transition">
+        {icon}
       </div>
 
-      {/* TEXT */}
       <div className="text-white font-medium mb-1">{title}</div>
       <div className="text-sm text-white/60 mb-3">{description}</div>
-
-      {/* CTA */}
-      <div className="text-sm font-medium text-[#27d3b8]">
-        {cta}
-      </div>
+      <div className="text-sm font-medium text-[#27d3b8]">→ {target}</div>
     </a>
   );
 }
