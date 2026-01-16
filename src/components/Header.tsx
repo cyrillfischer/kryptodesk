@@ -72,16 +72,18 @@ function ActionButton({
         hover:text-[#050b1a]
       "
     >
-      <img
-        src={icon}
-        alt={label}
-        className="
-          h-[22px] w-[22px]
-          transition
-          group-hover:brightness-0
-          group-hover:invert
-        "
-      />
+     <img
+  src={icon}
+  alt={label}
+  className="
+    h-[22px] w-[22px]
+    brightness-0 invert
+    transition
+    group-hover:brightness-0
+    group-hover:invert-0
+  "
+/>
+
       <span>{label}</span>
     </a>
   );
